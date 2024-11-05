@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "French Toast Replacer",
+  "description": "Temporarily replace every element with a picture of French toast",
+  "version": "1.0",
+  "permissions": ["activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

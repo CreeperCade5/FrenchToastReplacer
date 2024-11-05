@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>French Toast Replacer</title>
+  <style>
+    body {
+      width: 200px;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    button {
+      padding: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h3>French Toast Replacer</h3>
+  <button id="replaceButton">Replace with French Toast</button>
+  <script>
+
+    document.getElementById('replaceButton').addEventListener('click', () => {
+      chrome.scripting.executeScript({
+        target: {tabId: chrome.tabs.TAB_ID_CURRENT},
+        func: replaceWithFrenchToast
+      });
+    });
+
+    
+    function replaceWithFrenchToast() {
+      const frenchToastImageUrl = "https://example.com/french-toast.jpg"; // Replace with a real image URL
+      const allElements = document.querySelectorAll('*');
+
+      allElements.forEach(element => {
+        const img = document.createElement('img');
+        img.src = frenchToastImageUrl;
+        img.style.width = '100%';
+        img.style.height = 'auto';
+        img.alt = 'French Toast';
+        element.innerHTML = ''; // Clear the element's contents
+        element.appendChild(img);
+      });
+    }
+  </script>
+</body>
+</html>
